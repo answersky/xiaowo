@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaowo.dao.ContentDao">
+    <resultMap id="contentMap" type="com.xiaowo.Content">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="editor" jdbcType="VARCHAR" property="editor"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="short_title" jdbcType="VARCHAR" property="shortTitle"/>
+        <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+        <result column="text_id" jdbcType="INTEGER" property="textId"/>
+        <result column="tags" jdbcType="VARCHAR" property="tags"/>
+        <result column="zone_id" jdbcType="INTEGER" property="zoneId"/>
+        <result column="pic_id" jdbcType="INTEGER" property="picId"/>
+        <result column="type_id" jdbcType="INTEGER" property="typeId"/>
+        <result column="recommend" jdbcType="VARCHAR" property="recommend"/>
+        <result column="decorate_money" jdbcType="VARCHAR" property="decorateMoney"/>
+        <result column="decorate_time" jdbcType="VARCHAR" property="decorateTime"/>
+        <result column="month_repayment" jdbcType="VARCHAR" property="monthRepayment"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="app_pc" jdbcType="VARCHAR" property="client"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+
+        <association property="picture" javaType="com.xiaowo.Picture">
+            <id property="id" column="pic_id"/>
+            <result property="path" column="path"/>
+            <result property="url" column="url"/>
+            <result property="description" column="description"/>
+        </association>
+
+        <association property="text" javaType="com.xiaowo.Text">
+            <id property="id" column="text_id"/>
+            <result property="source_url" column="sourceUrl"/>
+            <result property="remark" column="remark"/>
+            <result property="content" column="content"/>
+        </association>
+    </resultMap>
+
+    <select id="findCategoryIdByKeyword" resultType="Integer">
+        select id from website_menu where keyword=#{keyword}
+    </select>
+
+    <!--banner 最多取到6张 因此此处设置了上限-->
+    <select id="findFirstBannerByCategoryId" resultMap="contentMap">
+        SELECT
+        a.*,b.path,b.url,b.description,c.source_url,c.remark,c.content
+        FROM
+        cms_content a
+        LEFT JOIN cms_pic b on a.pic_id=b.id
+        LEFT JOIN cms_text c on a.text_id=c.id
+        WHERE
+        category_id = #{categoryId}
+        AND STATUS = '2'
+        ORDER BY
+        create_time DESC
+        LIMIT 6
+    </select>
+
+    <!--查询文章-->
+    <select id="findContentByCategoryId" resultMap="contentMap">
+        SELECT
+        a.*,b.path,b.url,b.description,c.source_url,c.remark,c.content
+        FROM
+        cms_content a
+        LEFT JOIN cms_pic b on a.pic_id=b.id
+        LEFT JOIN cms_text c on a.text_id=c.id
+        WHERE
+        category_id=#{categoryId} and status='2'
+        <if test="recommend!=null and recommend!=''">
+            and a.recommend=#{recommend}
+        </if>
+        ORDER by a.id desc
+        <if test="page!=null">
+            limit #{page},10
+        </if>
+    </select>
+
+    <select id="findBrandBanner" resultMap="contentMap">
+        SELECT
+        a.*,b.path,b.url,b.description,c.source_url,c.remark,c.content
+        FROM
+        cms_content a
+        LEFT JOIN cms_pic b on a.pic_id=b.id
+        LEFT JOIN cms_text c on a.text_id=c.id
+        WHERE
+        category_id=#{categoryId} and status='2'
+        ORDER by create_time desc limit 1
+    </select>
+
+    <select id="count" resultType="Integer">
+        select count(1) from cms_content where category_id=#{categoryId} and status='2'
+    </select>
+
+    <!--合作伙伴-->
+    <select id="findFirstPartnerByCategoryId" resultMap="contentMap">
+        select * from cms_content where category_id=#{categoryId} and status='2'
+    </select>
+
+    <select id="findContentById" resultMap="contentMap">
+        SELECT
+        a.*,b.path,b.url,b.description,c.source_url,c.remark,c.content
+        FROM
+        cms_content a
+        LEFT JOIN cms_pic b on a.pic_id=b.id
+        LEFT JOIN cms_text c on a.text_id=c.id
+        WHERE a.id=#{id}
+    </select>
+
+    <!--上一篇文章-->
+    <select id="preContent" resultMap="contentMap">
+        select id,title from cms_content where category_id=#{categoryId} and status='2' and id>#{id} ORDER BY id asc limit 1
+    </select>
+    <!--下一篇文章-->
+    <select id="nextContent" resultMap="contentMap">
+        select id,title from cms_content where category_id=#{categoryId} and status='2' and id&lt;#{id} ORDER BY id desc limit 1
+    </select>
+
+    <!--相关文章-->
+    <select id="relativeContent" resultMap="contentMap">
+        select id,title from cms_content where category_id=#{categoryId} and status='2' ORDER  by id desc limit 6
+    </select>
+
+    <!--热门文章-->
+    <select id="hotContent" resultMap="contentMap">
+        select id,title,category_id from cms_content where id in
+        <foreach item="id" collection="ids" separator="," open="(" close=")" index="">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

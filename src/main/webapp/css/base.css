@@ -1,0 +1,316 @@
+@charset "utf-8";
+/*样式重置*/
+html {
+    font-size: 625%;
+    color: #333;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, dl, dd, ol, ul, li, form, input, textarea, th, td, select, header, section, footer, nav, img {
+    margin: 0;
+    padding: 0;
+}
+
+em, i {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+    color: #333;
+}
+
+a:focus {
+    outline: none;
+}
+
+b {
+    font-weight: normal;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+input, textarea, select, option {
+    vertical-align: middle;
+    outline: none;
+    border: none;
+    background: none;
+    box-sizing: content-box;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
+table {
+    border-spacing: 0px;
+    border: none;
+    border-collapse: collapse;
+}
+
+body, input, select, button, textarea {
+    font-size: 0.14rem;
+    font-family: tahoma, "microsoft yahei", "\5FAE\8F6F\96C5\9ED1" !important;;
+    background: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+/*公共样式*/
+
+/*特殊*/
+.h0 {
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+}
+/*文本溢出隐藏不换行*/
+.ov-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.t-nowrap {
+    white-space: nowrap;
+}
+
+.select-not {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.text-over {
+    overflow: hidden;
+    text-indent: 99999px;
+    line-height: 99999;
+    display: block;
+}
+
+/*浮动*/
+.clear {
+    zoom: 1;
+}
+
+.ovfl {
+    overflow: hidden
+}
+
+.clear:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+
+/*鼠标*/
+.cur {
+    cursor: pointer;
+}
+
+.cur-none {
+    cursor: not-allowed;
+}
+
+.cur-move {
+    cursor: move;
+}
+
+/*隐藏 定位*/
+.ovfl {
+    overflow: hidden;
+}
+
+.visib {
+    visibility: hidden;
+}
+
+.dis-blo {
+    display: block;
+}
+
+.dis-no {
+    display: none;
+}
+
+.dis-ib {
+    *display: inline;
+    *zoom: 1;
+    vertical-align: top;
+    display: inline-block;
+}
+/*角边框*/
+.bodcolor-no {
+    border-color: transparent !important;
+}
+
+body {
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+}
+
+
+.vam {
+    vertical-align: middle;
+}
+
+.vat {
+    vertical-align: top;
+}
+
+.vabline {
+    vertical-align: baseline;
+}
+
+.vab {
+    vertical-align: bottom;
+}
+/*显隐藏
+ * $ishows 配置对象
+ **********************************************************************/
+.show {
+    display: block;
+}
+
+.block {
+    display: block !important;;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.hide {
+    display: none;
+}
+
+/*浮动
+ * $floats 配置对象
+ **********************************************************************/
+.fl {
+    float: left;
+}
+
+.fr, .fr:after {
+    float: right;
+}
+
+.fn {
+    float: none;
+}
+
+.clr:after {
+    content: "";
+    height: 0px;
+    width: 100%;
+    display: table;
+    clear: both;
+}
+.absolute {
+    position: absolute;
+}
+.relative {
+    position: relative;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-center :before {
+    float: inherit !important;
+}
+.fixed {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.boldNode {
+    font-weight: normal;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+/*字体颜色*/
+.gray-1 {
+    color: #333;
+}
+
+.gray-2 {
+    color: #666;
+}
+
+.gray-3 {
+    color: #999;
+}
+
+.gray-4 {
+    color: #ccc;
+}
+
+.bg-gray {
+    background-color: #f9f9f9;
+}
+
+select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand {
+    display: none;
+}

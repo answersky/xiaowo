@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaowo.dao.FriendshipLinkDao">
+    <resultMap id="friendLinkMap" type="com.xiaowo.FriendshipLink">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="word" jdbcType="VARCHAR" property="word"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <select id="findFriendshipLinks" resultMap="friendLinkMap">
+        select * from friendship_link where status='2'
+    </select>
+
+    <select id="findFriendshipLinkById" resultMap="friendLinkMap">
+        select * from friendship_link where id=#{id}
+    </select>
+
+
+</mapper>

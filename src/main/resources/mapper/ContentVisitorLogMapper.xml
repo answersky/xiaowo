@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaowo.dao.ContentVisitorDao">
+
+    <insert id="saveVisitorLog">
+        insert into content_count(content_id,time) VALUES (#{id},now())
+    </insert>
+
+    <select id="findHotContentId" resultType="Integer">
+        select content_id as count from content_count where time > #{sTime} and time&lt;#{eTime}
+        group by content_id ORDER BY count desc limit 10
+    </select>
+
+</mapper>

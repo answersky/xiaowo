@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaowo.dao.ApplyDao">
+    <resultMap id="depMap" type="com.xiaowo.ApplyLog">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="tel" jdbcType="VARCHAR" property="tel"/>
+        <result column="channel" jdbcType="VARCHAR" property="channel"/>
+        <result column="resource" jdbcType="VARCHAR" property="resource"/>
+    </resultMap>
+
+    <insert id="saveApplyLog">
+        insert into apply_log(username,tel,channel,resource,create_time) VALUES (#{username},#{tel},#{channel},#{resource},now())
+    </insert>
+
+    <insert id="saveCount">
+        insert into apply_count(resource,count) VALUES (#{resource},1)
+    </insert>
+
+    <insert id="saveVisitorCount">
+        insert into apply_count(resource,visitor_count) VALUES (#{resource},1)
+    </insert>
+
+    <select id="findCountByResource" resultType="Integer">
+        select count from apply_count where resource=#{resource}
+    </select>
+
+    <update id="updateCount">
+        UPDATE apply_count set count=#{count} where resource=#{resource}
+    </update>
+
+    <select id="findVisitorCountByResource" resultType="Integer">
+        select visitor_count from apply_count where resource=#{resource}
+    </select>
+
+    <update id="updateVisitorCount">
+        UPDATE apply_count set visitor_count=#{visitorCount} where resource=#{resource}
+    </update>
+</mapper>

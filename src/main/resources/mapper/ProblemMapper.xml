@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaowo.dao.ProblemDao">
+    <resultMap id="problemMap" type="com.xiaowo.Problem">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="category_id" jdbcType="VARCHAR" property="categoryId"/>
+        <result column="category" jdbcType="VARCHAR" property="category"/>
+        <result column="problem" jdbcType="VARCHAR" property="problem"/>
+        <result column="answer" jdbcType="VARCHAR" property="answer"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="recommend" jdbcType="VARCHAR" property="recommend"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <select id="findProblems" resultMap="problemMap">
+        select * from problem where status='2' and recommend='1' ORDER by create_time desc
+    </select>
+
+    <select id="findRecommendProblem" resultMap="problemMap">
+        select * from problem where status='2' and recommend='1' order by create_time desc
+    </select>
+
+    <select id="findAllProblemCategory" resultType="com.xiaowo.ProblemCategory">
+       select id,category from problem_category where status!='0'
+    </select>
+
+    <select id="findProblemsByCategoryId" resultMap="problemMap">
+        select * from problem  where category_id=#{categoryId} and status='2'
+    </select>
+</mapper>

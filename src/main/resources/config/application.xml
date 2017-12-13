@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <!-- 引入jdbc配置文件 -->
+    <context:property-placeholder location="classpath:config/jdbc.properties,classpath:config/redis.properties"/>
+
+
+    <import resource="classpath:bean/bean-resource.xml" />
+    <import resource="spring-redis.xml"/>
+    <!--<import resource="classpath:bean/beans-task.xml" />-->
+
+    <!-- 激活annotation功能 -->
+    <context:annotation-config />
+    <!-- 激活annotation功能 -->
+    <context:spring-configured />
+
+    <!-- 扫描文件（自动将service层注入） -->
+    <context:component-scan base-package="com.xiaowo.service,com.xiaowo.task"/>
+
+
+    <!--ehcache 缓存-->
+    <cache:annotation-driven cache-manager="cacheManager"/>
+    <!-- Spring提供的基于的Ehcache实现的缓存管理器 -->
+    <bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:bean/ehcache.xml"/>
+    </bean>
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="cacheManagerFactory"/>
+    </bean>
+</beans>

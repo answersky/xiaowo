@@ -1,0 +1,91 @@
+ol, ul {
+    list-style: none;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+
+.subject-list li {
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 725px;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    height: 300px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.subject-list li .subject-list-pic {
+    width: 700px;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+a {
+    color: #333;
+}
+
+ins, a {
+    text-decoration: none;
+}
+
+fieldset, img {
+    border: none;
+}
+
+.subject-list .subject-info {
+    padding-top: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+}
+
+.subject-list .subject-info h2 {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.subject-list .subject-info .txt {
+    color: #999;
+    padding: 10px 0;
+}
+
+.subject-list li p {
+    margin-bottom: 8px;
+}
+
+.subject-list li .subject-btn {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.subject-list li p {
+    margin-bottom: 8px;
+}
+
+.btn-orange {
+    background: #ff6600;
+    border-color: #ff6600;
+    color: #fff !important;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0 45px;
+    height: 42px;
+    margin: 0;
+    border: 1px solid #b0b0b0;
+    font-size: 14px;
+    line-height: 42px;
+    text-align: center;
+    color: #b0b0b0;
+    cursor: pointer;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    border-radius: 4px;
+    margin-right: 10px;
+}

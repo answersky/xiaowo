@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaowo.dao.RecruitDao">
+    <resultMap id="recruitMap" type="com.xiaowo.Recruit">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="department_id" jdbcType="INTEGER" property="departmentId"/>
+        <result column="position_id" jdbcType="INTEGER" property="positionId"/>
+        <result column="zone_id" jdbcType="INTEGER" property="zoneId"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="department" jdbcType="VARCHAR" property="department"/>
+        <result column="position" jdbcType="VARCHAR" property="position"/>
+        <result column="zone" jdbcType="VARCHAR" property="zone"/>
+        <result column="duty" jdbcType="VARCHAR" property="duty"/>
+        <result column="job_requirements" jdbcType="VARCHAR" property="jobRequirements"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <select id="findBydepartIdAndZoneId" resultMap="recruitMap">
+        select a.*,b.department,c.position,d.zone from
+        join_us a
+        LEFT JOIN department b ON a.department_id = b.id
+        LEFT JOIN position c ON a.position_id = c.id
+        LEFT JOIN cms_city d ON a.zone_id = d.id
+        where
+        <if test="departmentId!=null">
+            department_id=#{departmentId} and
+        </if>
+        <if test="zoneId!=null">
+            zone_id=#{zoneId} and
+        </if>
+        <if test="type!=null and type!=''">
+            type=#{type} and
+        </if>
+        a.status ='2'
+    </select>
+
+</mapper>

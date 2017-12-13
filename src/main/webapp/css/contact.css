@@ -1,0 +1,320 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 700;
+}
+
+.iw_poi_title {
+    color: #F00;
+    font-style: oblique;
+    margin-right: 5px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.BMapLabel {
+    color: #F00;
+    font-style: oblique;
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+.contact_box {
+    margin-top: 1px;
+    position: relative;
+}
+
+.map_box {
+    width: 896px;
+    height: 525px;
+}
+
+.map_box .allmap {
+    height: 100%;
+}
+
+.address_list {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 324px;
+    height: 730px;
+    border-top: 1px solid #e8e8e8;
+    overflow: hidden;
+}
+
+.address_scroll {
+    margin-top: 10px;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 306px;
+    height: auto;
+}
+
+.address_scroll li {
+    margin-bottom: 13px;
+    height: auto;
+    _height: 128px;
+    overflow: hidden;
+}
+
+.address_scroll .a_l_ico {
+    float: left;
+    width: 78px;
+}
+
+.address_scroll .a_l_ico a {
+    display: block;
+    width: 78px;
+    overflow: hidden;
+    color: #777;
+    font-weight: bold;
+    text-align: center;
+    line-height: 26px;
+    text-decoration: none;
+    font-family: Arial, "瀹嬩綋", sans-serif !important
+}
+
+.address_scroll .a_l_ico a span {
+    display: block;
+}
+
+.address_scroll .a_r_text {
+    padding: 4px 10px;
+    float: right;
+    width: 192px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.address_scroll .a_r_text p {
+    width: 192px;
+    color: #999;
+    line-height: 24px;
+}
+
+.address_scroll .a_r_text:hover,
+.address_scroll .a_r_text_cur .a_r_text {
+    background: #f4f4f4;
+}
+
+.address_scroll .a_r_text .c_url {
+    display: none;
+}
+
+.c_scroll {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #ececec;
+}
+
+.c_scroll_bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: #ececec;
+}
+
+.contact_type {
+    margin-top: 70px;
+    height: 215px;
+}
+
+.each_msg_center {
+    position: absolute;
+    left: -134px;
+    bottom: 5px;
+    display: none;
+    padding: 25px;
+    width: 220px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.each_msg_center strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #5c5c5c;
+}
+
+.each_msg_center p {
+    color: #999;
+    line-height: 26px;
+}
+
+.each_msg_center .look_this_website {
+    display: block;
+    margin-top: 15px;
+    width: 220px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    background: #7db2aa;
+}
+
+.each_msg_center .look_this_website:hover {
+    background: #6d9e97;
+    text-decoration: none;
+}
+
+.each_msg_center .cBlue {
+    color: #7db2aa;
+}
+
+.each_msg_center .close_msg_box {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    cursor: pointer;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url(http://img.to8to.com/front_end/bg/map_close_ico.png) no-repeat;
+    transition: .3s all;
+    z-index: 50;
+}
+
+.each_msg_center .close_msg_box:hover {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.each_msg_center_show {
+    display: block;
+}
+
+.map_label {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: -18px 0 0 -12px;
+    width: 24px;
+    height: 38px;
+    cursor: pointer;
+}
+
+.contact_type {
+    color: #999;
+    font-size: 14px;
+}
+
+.contact_type p {
+    padding-top: 15px;
+}
+
+.contact_type .mail_ico {
+    display: inline-block;
+    margin-right: 10px;
+    width: 27px;
+    height: 20px;
+    vertical-align: middle;
+    background: url(http://img.to8to.com/front_end/bg/about_new_bg.png) -11px -323px no-repeat;
+}
+
+.contact_type .contact_hot_line {
+    margin-top: 26px;
+}
+
+.contact_type .hot_line_left,
+.contact_type .hot_line_right {
+    position: relative;
+    display: inline;
+    margin-right: 10px;
+    float: left;
+    padding: 10px;
+    width: 420px;
+    background: #f4f4f4;
+}
+
+.contact_type .hot_line_left p,
+.contact_type .hot_line_right p {
+    padding: 0;
+    line-height: 30px;
+    color: #5c5c5c;
+}
+
+.contact_type .hot_line_circle {
+    position: absolute;
+    right: -54px;
+    top: -52px;
+    display: block;
+    width: 133px;
+    height: 132px;
+}
+
+.g-contact-cont {
+    width: 1220px;
+    min-height: 648px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border-top: 20px solid #F9F9F9;
+    border-bottom: 35px solid #F9F9F9;
+    padding: 20px;
+}
+
+.contact-txt {
+    padding: 60px 40px 60px 120px;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.contact-address {
+    padding-bottom: 80px;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.contact-txt .address-info {
+    padding: 40px 160px;
+}
+
+.fn-clear {
+    zoom: 1;
+}
+
+.contact-txt .address-info li {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.contact-txt .address-info li img {
+    width: 160px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 15px;
+}
+
+.contact-address .address-info h5 {
+    font-size: 15px;
+    line-height: 16px;
+}
+
+.contact-address p {
+    color: #999;
+    font-size: 14px;
+}
+
+.contact-address h2 {
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #666;
+}
